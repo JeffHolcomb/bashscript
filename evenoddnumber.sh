@@ -6,10 +6,13 @@
 #Specials instructions: N/A
 #Source: https://www.hostinger.com/tutorials/bash-script-example#18_Read_Files
 read -p "Enter a number and I will check if its odd or even " mynumber
-#If the number divided by 2 has a remainder of 0 then do this, otherwise do this
-if [ $((mynumber%2)) -eq 0 ]
-then
-echo "Your number is even"
+re='^[0-9]+$'
+if [[ $mynumber =~ $re ]] ; then
+  if [ $((mynumber%2)) -eq 0 ]; then
+	echo "Your number is even"
+  else
+	echo "Your number is odd."
+  fi
 else
-echo "Your number is odd."
+	echo "You must enter a digit"
 fi
